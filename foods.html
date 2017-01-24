@@ -5,7 +5,19 @@
   <title>Quantified Self - Manage Foods</title>
 </head>
 <body>
+<form class="food-form">
+  Name: <br>
+  <input type="text" class="new-food"><br>
+  Please enter a food name<br>
+  Calories: <br>
+  <input type="text" class="new-calories"><br>
+  Please enter a calorie amount<br>
+  <input type="submit" value="submit">
+</form>
+
+<input type="button" value="Generate a table." onclick="buildFoodsTable()">
 
   <script src="main.bundle.js"></script>
+  <script src="food.js"></script>
 </body>
 </html>
