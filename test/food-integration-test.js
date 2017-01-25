@@ -17,7 +17,7 @@ test.describe('foods', function() {
   })
 
   test.it('should allow me to add a food name and calories', function() {
-    driver.get('http://localhost:8080/webpack-dev-server/foods.html/');
+    driver.get('http://localhost:8080/foods.html');
 
     var name = driver.findElement({id: 'new-food-name'});
     var calories = driver.findElement({id: 'new-food-calories'});
@@ -34,7 +34,7 @@ test.describe('foods', function() {
   });
 
   test.it('should allow me to create a food', function() {
-    driver.get('http://localhost:8080/foods.html/webpack-dev-server/foods.html');
+    driver.get('http://localhost:8080/foods.html');
 
     var name = driver.findElement({id: 'new-food-name'});
     var calories = driver.findElement({id: 'new-food-calories'});
@@ -46,7 +46,7 @@ test.describe('foods', function() {
 
     driver.sleep(1000);
 
-    driver.findElement({id: 'new-food-name'}).getText().then(function(textValue) {
+    driver.findElement({css: 'td.enclosed-cells:nth-child(1)'}).getText().then(function(textValue) {
       assert.equal(textValue, "new test name");
     });
   })
@@ -60,7 +60,6 @@ test.describe('foods', function() {
     .then(function(highScore){
       assert.equal(highScore, "340");
     });
-
   })
 
   test.xit("Does localStorage persist accross my chrome and selenium's chrome", function(){
