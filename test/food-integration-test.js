@@ -51,23 +51,14 @@ test.describe('foods', function() {
     });
   })
 
-  test.xit("can set localStorage and persist across refreshes", function(){
+  test.it("can set localStorage and persist across refreshes", function(){
     driver.get("http://localhost:8080/webpack-dev-server/");
-    driver.executeScript("window.localStorage.setItem('highScore', '340')");
+    driver.executeScript("window.localStorage.setItem('foods', '{cheetos:1000}')");
 
     driver.get("http://localhost:8080/webpack-dev-server/");
-    driver.executeScript("return window.localStorage.getItem('highScore')")
-    .then(function(highScore){
-      assert.equal(highScore, "340");
+    driver.executeScript("return window.localStorage.getItem('foods', '{cheetos:1000}')")
+    .then(function(foods){
+      assert.equal(foods, '{cheetos:1000}');
     });
   })
-
-  test.xit("Does localStorage persist accross my chrome and selenium's chrome", function(){
-    driver.get("http://localhost:8080/webpack-dev-server/");
-
-    driver.executeScript("return window.localStorage.getItem('highScore')")
-    .then(function(highScore){
-      assert.equal(highScore, "340");
-    });
-  });
 });
