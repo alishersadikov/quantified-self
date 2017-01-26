@@ -1,11 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Quantified Self - Manage Foods</title>
-</head>
-<body>
-
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/lib/styles/food.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <p>Food Name:</p>
+    <input id="new-food-name"><br>
+    <div id="new-name-div">
+       &nbsp;
+    </div>
+    <p>Calories:</p>
+    <input id="new-food-calories">
+    <div id="new-calorie-div">
+      &nbsp;
+    </div>
+    <input id="new-food-submit" type="submit" value="Add food">
+    <br><br><br>
+    <div class="container">
+      <table id="food-table">
+        <tr>
+          <th class="enclosed-cells">Name</th>
+          <th class="enclosed-cells">Calories</th>
+          <th></th>
+        </tr>
+        <tbody id="food-table-body">
+        </tbody>
+      </table>
+    </div>
+  </body>
   <script src="main.bundle.js"></script>
-</body>
 </html>
