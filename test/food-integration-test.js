@@ -61,4 +61,54 @@ test.describe('foods', function() {
       assert.equal(foods, '{cheetos:1000}');
     });
   })
+
+  test.it("it prepends the added food below the headers above the other foods", function(){
+    driver.get('http://localhost:8080/foods.html');
+    var name = driver.findElement({id: 'new-food-name'});
+    var calories = driver.findElement({id: 'new-food-calories'});
+    var submitButton = driver.findElement({id: 'new-food-submit'});
+
+
+    name.sendKeys('test name 1');
+    calories.sendKeys('123');
+    submitButton.click();
+
+    name.sendKeys('test name 2');
+    calories.sendKeys('456');
+    submitButton.click();
+    driver.sleep(1000);
+
+    driver.findElement({css: 'tr:nth-child(2) td:nth-child(1)'}).getText().then(function(textValue) {
+      assert.equal(textValue, "test name 2");
+    });
+
+    driver.findElement({css: 'tr:nth-child(2) td:nth-child(2)'}).getText().then(function(textValue) {
+      assert.equal(textValue, "456");
+    });
+  });
+
+  test.it("it clears the input fields after a food is successfully submitted", function(){
+    driver.get('http://localhost:8080/foods.html');
+    var name = driver.findElement({id: 'new-food-name'});
+    var calories = driver.findElement({id: 'new-food-calories'});
+    var submitButton = driver.findElement({id: 'new-food-submit'});
+
+    name.sendKeys('test name 1');
+    calories.sendKeys('123');
+    submitButton.click();
+
+    name.sendKeys('test name 2');
+    calories.sendKeys('456');
+    submitButton.click();
+
+    driver.sleep(1000);
+
+    driver.findElement({css: 'tr:nth-child(2) td:nth-child(1)'}).getText().then(function(textValue) {
+      assert.equal(textValue, "test name 2");
+    });
+
+    driver.findElement({css: 'tr:nth-child(2) td:nth-child(2)'}).getText().then(function(textValue) {
+      assert.equal(textValue, "456");
+    });
+  });
 });
