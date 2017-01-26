@@ -111,4 +111,55 @@ test.describe('foods', function() {
       assert.equal(textValue, "456");
     });
   });
+
+  test.it("foods persist after the page is refreshed and display in the correct order", function(){
+    driver.get('http://localhost:8080/foods.html');
+    var name = driver.findElement({id: 'new-food-name'});
+    var calories = driver.findElement({id: 'new-food-calories'});
+    var submitButton = driver.findElement({id: 'new-food-submit'});
+
+    name.sendKeys('test name 1');
+    calories.sendKeys('123');
+    submitButton.click();
+
+    name.sendKeys('test name 2');
+    calories.sendKeys('456');
+    submitButton.click();
+
+    driver.sleep(1000);
+
+    driver.findElement({css: 'tr:nth-child(2) td:nth-child(1)'}).getText().then(function(textValue) {
+      assert.equal(textValue, "test name 2");
+    });
+
+    driver.findElement({css: 'tr:nth-child(2) td:nth-child(2)'}).getText().then(function(textValue) {
+      assert.equal(textValue, "456");
+    });
+
+    driver.findElement({css: 'tr:nth-child(3) td:nth-child(1)'}).getText().then(function(textValue) {
+      assert.equal(textValue, "test name 1");
+    });
+
+    driver.findElement({css: 'tr:nth-child(3) td:nth-child(2)'}).getText().then(function(textValue) {
+      assert.equal(textValue, "123");
+    });
+
+    driver.get('http://localhost:8080/foods.html');
+
+    driver.findElement({css: 'tr:nth-child(2) td:nth-child(1)'}).getText().then(function(textValue) {
+      assert.equal(textValue, "test name 2");
+    });
+
+    driver.findElement({css: 'tr:nth-child(2) td:nth-child(2)'}).getText().then(function(textValue) {
+      assert.equal(textValue, "456");
+    });
+
+    driver.findElement({css: 'tr:nth-child(3) td:nth-child(1)'}).getText().then(function(textValue) {
+      assert.equal(textValue, "test name 1");
+    });
+
+    driver.findElement({css: 'tr:nth-child(3) td:nth-child(2)'}).getText().then(function(textValue) {
+      assert.equal(textValue, "123");
+    });
+  });
 });
