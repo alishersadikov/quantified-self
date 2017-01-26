@@ -1,3 +1,17 @@
 .enclosed-cells{
   border: 1px solid black;
 }
+
+.container {
+  text-align: center;
+}
+
+.table-container {
+  position: absolute;
+  left: 650px;
+}
+
+.input-field {
+  border-radius: 5px;
+  width: 250px; 
+}

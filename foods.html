@@ -11,20 +11,26 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
+
   <body>
-    <p>Food Name:</p>
-    <input id="new-food-name"><br>
-    <div id="new-name-div">
-       &nbsp;
-    </div>
-    <p>Calories:</p>
-    <input id="new-food-calories">
-    <div id="new-calorie-div">
-      &nbsp;
-    </div>
-    <input id="new-food-submit" type="submit" value="Add food">
-    <br><br><br>
     <div class="container">
+
+    <div class="input-container">
+      <p>Food Name:</p>
+      <input id="new-food-name" class="input-field"><br>
+      <div id="new-name-div">
+        &nbsp;
+      </div>
+      <p>Calories:</p>
+      <input id="new-food-calories" class="input-field">
+      <div id="new-calorie-div">
+        &nbsp;
+      </div>
+      <input id="new-food-submit" type="submit" value="Add food" class="btn btn-success input-field">
+      <br><br><br>
+    </div>
+
+    <div class="table-container">
       <table id="food-table">
         <tr>
           <th class="enclosed-cells">Name</th>
@@ -35,6 +41,8 @@
         </tbody>
       </table>
     </div>
-  </body>
+
+    </body>
+  </div>
   <script src="main.bundle.js"></script>
 </html>
