@@ -1,0 +1,18 @@
+.container {
+  margin-top: 30px;
+}
+
+.edges {
+  /*float: left;*/
+  height: 40px;
+  width: 40px;
+  background-color: #82b1ff;
+  display: inline-block;
+}
+
+.date {
+  height: 40px;
+  width: 300px;
+  background-color: #82b1ff;
+  display: inline-block;
+}
