@@ -10279,7 +10279,7 @@
 
 	var foodNameInput = document.getElementById('new-food-name');
 	var foodCalorieInput = document.getElementById('new-food-calories');
-	var foodSubmitButton = document.getElementById('new-food-submit');
+	var foodSubmitButton = document.getElementById('new-submit');
 
 	appendFoodsToTable();
 

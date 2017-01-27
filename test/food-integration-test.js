@@ -38,7 +38,7 @@ test.describe('foods', function() {
 
     var name = driver.findElement({id: 'new-food-name'});
     var calories = driver.findElement({id: 'new-food-calories'});
-    var submitButton = driver.findElement({id: 'new-food-submit'});
+    var submitButton = driver.findElement({id: 'new-submit'});
 
     name.sendKeys('new test name');
     calories.sendKeys('456');
@@ -66,7 +66,7 @@ test.describe('foods', function() {
     driver.get('http://localhost:8080/foods.html');
     var name = driver.findElement({id: 'new-food-name'});
     var calories = driver.findElement({id: 'new-food-calories'});
-    var submitButton = driver.findElement({id: 'new-food-submit'});
+    var submitButton = driver.findElement({id: 'new-submit'});
 
 
     name.sendKeys('test name 1');
@@ -91,7 +91,7 @@ test.describe('foods', function() {
     driver.get('http://localhost:8080/foods.html');
     var name = driver.findElement({id: 'new-food-name'});
     var calories = driver.findElement({id: 'new-food-calories'});
-    var submitButton = driver.findElement({id: 'new-food-submit'});
+    var submitButton = driver.findElement({id: 'new-submit'});
 
     name.sendKeys('test name 1');
     calories.sendKeys('123');
@@ -116,7 +116,7 @@ test.describe('foods', function() {
     driver.get('http://localhost:8080/foods.html');
     var name = driver.findElement({id: 'new-food-name'});
     var calories = driver.findElement({id: 'new-food-calories'});
-    var submitButton = driver.findElement({id: 'new-food-submit'});
+    var submitButton = driver.findElement({id: 'new-submit'});
 
     name.sendKeys('test name 1');
     calories.sendKeys('123');
