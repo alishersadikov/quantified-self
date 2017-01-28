@@ -15,6 +15,24 @@ test.describe('foods', function() {
   test.afterEach(function() {
     driver.quit();
   })
+  test.it('removes the food from the table when you click the delete button on that line', function() {
+    driver.get('http://localhost:8080/foods.html')
+    var name = driver.findElement({id: 'new-food-name'});
+    var calories = driver.findElement({id: 'new-food-calories'});
+    var submitButton = driver.findElement({id: 'new-submit'});
+    var deleteButton =  driver.findElement({id: 'food-table > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(3) > button > span'})
+
+
+    name.sendKeys('test name 1');
+    calories.sendKeys('123');
+    submitButton.click();
+    deleteButton.click();
+
+    // driver.assert(driver.findElement({css: 'tr:nth-child(1) td:nth-child(1)'}), undefined)
+
+    var tableBody = driver.findElement({css:'#food-table-body'})
+    assert(tableBody.isElementPresent({css: 'tr:nth-child(1) td:nth-child(1)'})).isFalse()
+  });
 
   test.it('should allow me to add a food name and calories', function() {
     driver.get('http://localhost:8080/foods.html');
@@ -78,11 +96,11 @@ test.describe('foods', function() {
     submitButton.click();
     driver.sleep(1000);
 
-    driver.findElement({css: 'tr:nth-child(2) td:nth-child(1)'}).getText().then(function(textValue) {
+    driver.findElement({css: 'tr:nth-child(1) td:nth-child(1)'}).getText().then(function(textValue) {
       assert.equal(textValue, "test name 2");
     });
 
-    driver.findElement({css: 'tr:nth-child(2) td:nth-child(2)'}).getText().then(function(textValue) {
+    driver.findElement({css: 'tr:nth-child(1) td:nth-child(2)'}).getText().then(function(textValue) {
       assert.equal(textValue, "456");
     });
   });
@@ -103,11 +121,11 @@ test.describe('foods', function() {
 
     driver.sleep(1000);
 
-    driver.findElement({css: 'tr:nth-child(2) td:nth-child(1)'}).getText().then(function(textValue) {
+    driver.findElement({css: 'tr:nth-child(1) td:nth-child(1)'}).getText().then(function(textValue) {
       assert.equal(textValue, "test name 2");
     });
 
-    driver.findElement({css: 'tr:nth-child(2) td:nth-child(2)'}).getText().then(function(textValue) {
+    driver.findElement({css: 'tr:nth-child(1) td:nth-child(2)'}).getText().then(function(textValue) {
       assert.equal(textValue, "456");
     });
   });
@@ -128,37 +146,37 @@ test.describe('foods', function() {
 
     driver.sleep(1000);
 
-    driver.findElement({css: 'tr:nth-child(2) td:nth-child(1)'}).getText().then(function(textValue) {
+    driver.findElement({css: 'tr:nth-child(1) td:nth-child(1)'}).getText().then(function(textValue) {
       assert.equal(textValue, "test name 2");
     });
 
-    driver.findElement({css: 'tr:nth-child(2) td:nth-child(2)'}).getText().then(function(textValue) {
+    driver.findElement({css: 'tr:nth-child(1) td:nth-child(2)'}).getText().then(function(textValue) {
       assert.equal(textValue, "456");
     });
 
-    driver.findElement({css: 'tr:nth-child(3) td:nth-child(1)'}).getText().then(function(textValue) {
+    driver.findElement({css: 'tr:nth-child(2) td:nth-child(1)'}).getText().then(function(textValue) {
       assert.equal(textValue, "test name 1");
     });
 
-    driver.findElement({css: 'tr:nth-child(3) td:nth-child(2)'}).getText().then(function(textValue) {
+    driver.findElement({css: 'tr:nth-child(2) td:nth-child(2)'}).getText().then(function(textValue) {
       assert.equal(textValue, "123");
     });
 
     driver.get('http://localhost:8080/foods.html');
 
-    driver.findElement({css: 'tr:nth-child(2) td:nth-child(1)'}).getText().then(function(textValue) {
+    driver.findElement({css: 'tr:nth-child(1) td:nth-child(1)'}).getText().then(function(textValue) {
       assert.equal(textValue, "test name 2");
     });
 
-    driver.findElement({css: 'tr:nth-child(2) td:nth-child(2)'}).getText().then(function(textValue) {
+    driver.findElement({css: 'tr:nth-child(1) td:nth-child(2)'}).getText().then(function(textValue) {
       assert.equal(textValue, "456");
     });
 
-    driver.findElement({css: 'tr:nth-child(3) td:nth-child(1)'}).getText().then(function(textValue) {
+    driver.findElement({css: 'tr:nth-child(2) td:nth-child(1)'}).getText().then(function(textValue) {
       assert.equal(textValue, "test name 1");
     });
 
-    driver.findElement({css: 'tr:nth-child(3) td:nth-child(2)'}).getText().then(function(textValue) {
+    driver.findElement({css: 'tr:nth-child(2) td:nth-child(2)'}).getText().then(function(textValue) {
       assert.equal(textValue, "123");
     });
   });
