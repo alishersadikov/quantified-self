@@ -16,3 +16,9 @@
   background-color: #82b1ff;
   display: inline-block;
 }
+
+button .left-edge {
+  background-color: #82b1ff;
+  margin: auto;
+  text-align: center;
+}
