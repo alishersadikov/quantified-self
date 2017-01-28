@@ -6,14 +6,15 @@
   /*float: left;*/
   height: 40px;
   width: 40px;
-  background-color: #82b1ff;
+  background-color: #54d9ff
+;
   display: inline-block;
 }
 
 .date {
   height: 40px;
   width: 300px;
-  background-color: #82b1ff;
+  background-color: #54d9ff;
   display: inline-block;
 }
 
@@ -21,4 +22,10 @@ button .left-edge {
   background-color: #82b1ff;
   margin: auto;
   text-align: center;
+}
+
+.fa {
+/*position: relative;
+left: 13px;
+top: 8px;*/
 }
