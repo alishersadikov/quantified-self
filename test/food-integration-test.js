@@ -175,7 +175,6 @@ test.describe('foods', function() {
 
     driver.sleep(1000);
 
-    debugger;
     driver.findElement({css: '#food-table tbody tr td:nth-child(3)'}).click();
 
     driver.findElements({css: 'tr:nth-child(2)'}).then(function(element){
