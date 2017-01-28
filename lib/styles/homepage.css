@@ -5,17 +5,12 @@
 .edges {
   height: 40px;
   width: 40px;
-  background-color: #77f3ff;
-;
+  background-color: #77f3ff;;
   display: inline-block;
   border: 2px solid gray;
 }
 
 .edges:hover {
-  background-color: #5ec4ff;
-}
-
-.date:hover {
   background-color: #5ec4ff;
 }
 
@@ -33,10 +28,12 @@
   height: 40px;
   width: 300px;
   background-color: #77f3ff;
-
-;
   display: inline-block;
   border: 2px solid gray;
+}
+
+.date:hover {
+  background-color: #5ec4ff;
 }
 
 .date span {
