@@ -1,0 +1,128 @@
+.container {
+  margin-top: 30px;
+}
+
+.edges {
+  height: 40px;
+  width: 40px;
+  background-color: #8effa1
+;
+  display: inline-block;
+  border: 2px solid gray;
+}
+
+.edges:hover {
+  background-color: #5ec4ff;
+}
+
+.left-arrow {
+  border-radius: 20px 0 0 20px;
+}
+
+.right-arrow {
+  border-radius: 0 20px 20px 0;
+}
+
+.date {
+  position: relative;
+  top: 16.4px;
+  height: 40px;
+  width: 300px;
+  background-color: #8effa1
+;
+  display: inline-block;
+  border: 2px solid gray;
+}
+
+.date:hover {
+  background-color: #5ec4ff;
+}
+
+.date span {
+  position: relative;
+  top: 4px;
+  font-size: 22px;
+}
+
+button .left-edge {
+  background-color: #82b1ff;
+  margin: auto;
+  text-align: center;
+}
+
+.fa {
+/*position: relative;
+left: 13px;
+top: 8px;*/
+}
+
+.enclosed-cells{
+  border: 1px solid black;
+  text-align: center; 
+}
+
+.display-table {
+  width: 250px;
+  text-align: center;
+}
+
+div .breakfast {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  display: inline-block;
+}
+
+div .lunch {
+  position: absolute;
+  top: 50px;
+  left: 450px;
+  display: inline-block;
+}
+
+div .dinner {
+  position: absolute;
+  top: 250px;
+  left: 100px;
+  display: inline-block;
+}
+
+div .snacks {
+  position: absolute;
+  top: 250px;
+  left: 450px;
+  display: inline-block;
+}
+
+div .exercise {
+  position: absolute;
+  top: 450px;
+  left: 100px;
+  display: inline-block;
+}
+
+div .totals {
+  position: absolute;
+  top: 450px;
+  left: 450px;
+  display: inline-block;
+}
+
+.table-container {
+  padding-top: 50px;
+  height: 1000px;
+  width: 800px;
+  background-color: #8effa1
+;
+  position: relative;
+  margin: 20px auto 0 auto;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.container {
+  margin: 30px auto 0 auto;
+  height: 100px;
+  width: 1000px;
+  text-align: center;
+}

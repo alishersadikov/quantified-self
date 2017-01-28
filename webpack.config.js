@@ -4,6 +4,7 @@ module.exports = {
   entry: {
     main: "./lib/index.js",
     exercise:"./lib/index2.js",
+    diary:"./lib/homepage-manifest.js",
     test: "mocha!./test/index.js"
   },
   output: {
