@@ -15,24 +15,6 @@ test.describe('foods', function() {
   test.afterEach(function() {
     driver.quit();
   })
-  test.it('removes the food from the table when you click the delete button on that line', function() {
-    driver.get('http://localhost:8080/foods.html')
-    var name = driver.findElement({id: 'new-food-name'});
-    var calories = driver.findElement({id: 'new-food-calories'});
-    var submitButton = driver.findElement({id: 'new-submit'});
-    var deleteButton =  driver.findElement({id: 'food-table > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(3) > button > span'})
-
-
-    name.sendKeys('test name 1');
-    calories.sendKeys('123');
-    submitButton.click();
-    deleteButton.click();
-
-    // driver.assert(driver.findElement({css: 'tr:nth-child(1) td:nth-child(1)'}), undefined)
-
-    var tableBody = driver.findElement({css:'#food-table-body'})
-    assert(tableBody.isElementPresent({css: 'tr:nth-child(1) td:nth-child(1)'})).isFalse()
-  });
 
   test.it('should allow me to add a food name and calories', function() {
     driver.get('http://localhost:8080/foods.html');
@@ -178,6 +160,26 @@ test.describe('foods', function() {
 
     driver.findElement({css: 'tr:nth-child(2) td:nth-child(2)'}).getText().then(function(textValue) {
       assert.equal(textValue, "123");
+    });
+  });
+
+  test.it('removes the food from the table when you click the delete button on that line', function() {
+    driver.get('http://localhost:8080/foods.html')
+    var name = driver.findElement({id: 'new-food-name'});
+    var calories = driver.findElement({id: 'new-food-calories'});
+    var submitButton = driver.findElement({id: 'new-submit'});
+
+    name.sendKeys('test name 1');
+    calories.sendKeys('123');
+    submitButton.click();
+
+    driver.sleep(1000);
+
+    debugger;
+    driver.findElement({css: '#food-table tbody tr td:nth-child(3)'}).click();
+
+    driver.findElements({css: 'tr:nth-child(2)'}).then(function(element){
+      assert.equal(0, element);
     });
   });
 });
