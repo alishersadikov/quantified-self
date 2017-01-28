@@ -20,14 +20,22 @@
     <i class="fa fa-arrow-left" aria-hidden="true"></i>
   </button>
 
-  <button class="date">
-    <i class="fa fa-calendar" aria-hidden="true"></i>
-  </button>
+  <!-- <button class="date">
+    <div class="todays-date"></div>
+  </button> -->
+
+  <marquee behavior="scroll" loop="-1" width="30%" class="date">
+   <i>
+    <strong>
+       <span class="today"></span>
+    </strong>
+   </i>
+  </marquee>
 
   <button class="edges right-arrow">
     <i class="fa fa-arrow-right" aria-hidden="true"></i>
   </button>
 </div>
-  <script src="main.bundle.js"></script>
+  <script src="diary.bundle.js"></script>
 </body>
 </html>
