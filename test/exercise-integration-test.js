@@ -162,4 +162,23 @@ test.describe('exercises', function() {
       assert.equal(textValue, "123");
     });
   });
+
+  test.it('removes the exercise from the table when you click the delete button on that line', function() {
+    driver.get('http://localhost:8080/exercises.html')
+    var name = driver.findElement({id: 'new-exercise-name'});
+    var calories = driver.findElement({id: 'new-exercise-calories'});
+    var submitButton = driver.findElement({id: 'new-submit'});
+
+    name.sendKeys('test name 1');
+    calories.sendKeys('123');
+    submitButton.click();
+
+    driver.sleep(1000);
+
+    driver.findElement({css: '#exercise-table tbody tr td:nth-child(3)'}).click();
+
+    driver.findElements({css: 'tr:nth-child(2)'}).then(function(element){
+      assert.equal(0, element);
+    });
+  });
 });
