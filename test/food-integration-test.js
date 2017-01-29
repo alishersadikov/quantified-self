@@ -16,11 +16,13 @@ test.describe('foods', function() {
     driver.quit();
   })
   test.it('if name is clicked it becomes an input field that will display that saves if you click elsewhere', function(){
+    driver.get('http://localhost:8080/foods.html');
+
     var name = driver.findElement({id: 'new-food-name'});
     var calories = driver.findElement({id: 'new-food-calories'});
     var submitButton = driver.findElement({id: 'new-submit'});
 
-    name.sendKeys('new test name');
+    name.sendKeys('name');
     calories.sendKeys('456');
     submitButton.click();
 
@@ -29,16 +31,14 @@ test.describe('foods', function() {
     var foodCell = driver.findElement({css: 'td.enclosed-cells:nth-child(1)'})
 
     foodCell.click()
-    driver.sleep(100);
+    driver.sleep(1000);
 
-    var updateFoodName = driver.findElement({id: 'update-food-name'})
+    foodCell.clear()
+
+    foodCell.sendKeys("Newer Name")
+    foodCell.sendKeys(webdriver.Key.RETURN)
 
 
-    updateFoodName.sendKeys("Newer Name")
-
-    var randomClickField = driver.findElement({id:'body > div > div'})
-
-    randomClickField.click()
 
     driver.findElement({css: 'td.enclosed-cells:nth-child(1)'}).getText().then(function(textValue) {
       assert.equal(textValue, "Newer Name");
