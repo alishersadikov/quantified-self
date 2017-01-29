@@ -181,7 +181,8 @@ test.describe('foods', function() {
       assert.equal(0, element);
     });
   });
-  test.it('if name is clicked it becomes an input field that will display that saves if you click hit return', function(){
+
+  test.it('if name is clicked it becomes an input field that will display that saves if you click elsewhere', function(){
     driver.get('http://localhost:8080/foods.html');
 
     var name = driver.findElement({id: 'new-food-name'});
@@ -208,6 +209,36 @@ test.describe('foods', function() {
 
     driver.findElement({css: 'td.enclosed-cells:nth-child(1)'}).getText().then(function(textValue) {
       assert.equal(textValue, "Newer Name");
+    });
+  });
+
+  test.it('if calories field is clicked it becomes an input field that will display that saves if you click elsewhere', function(){
+    driver.get('http://localhost:8080/foods.html');
+
+    var name = driver.findElement({id: 'new-food-name'});
+    var calories = driver.findElement({id: 'new-food-calories'});
+    var submitButton = driver.findElement({id: 'new-submit'});
+
+    name.sendKeys('name');
+    calories.sendKeys('456');
+    submitButton.click();
+
+    driver.sleep(1000);
+
+    var calorieCell = driver.findElement({css: 'td.enclosed-cells:nth-child(2)'})
+
+    calorieCell.click()
+    driver.sleep(1000);
+
+    calorieCell.clear()
+
+    calorieCell.sendKeys("1111")
+    calorieCell.sendKeys(webdriver.Key.RETURN)
+
+
+
+    driver.findElement({css: 'td.enclosed-cells:nth-child(2)'}).getText().then(function(textValue) {
+      assert.equal(textValue, "1111");
     });
   });
 });
