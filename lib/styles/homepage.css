@@ -58,7 +58,7 @@ top: 8px;*/
 
 .enclosed-cells{
   border: 1px solid black;
-  text-align: center; 
+  text-align: center;
 }
 
 .display-table {
@@ -110,7 +110,7 @@ div .totals {
 
 .table-container {
   padding-top: 50px;
-  height: 1000px;
+  height: 1500px;
   width: 800px;
   background-color: #8effa1
 ;
@@ -125,4 +125,38 @@ div .totals {
   height: 100px;
   width: 1000px;
   text-align: center;
+}
+/*FOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOD*/
+.food-controls {
+  position: absolute;
+  top: 650px;
+  left: 100px;
+}
+
+.enclosed-cells{
+  border: 1px solid black;
+  text-align: center;
+}
+
+.container {
+  text-align: center;
+}
+
+
+.input-field {
+  border-radius: 5px;
+  width: 250px;
+}
+
+.display-table {
+  width: 250px;
+  margin: auto;
+  text-align: center;
+}
+/* --------------------------------EXERCISE---------------------------------*/
+
+.exercise-controls {
+  position: absolute;
+  top: 650px;
+  left: 450px;
 }
