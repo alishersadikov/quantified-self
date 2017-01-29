@@ -4,7 +4,7 @@ var test      = require('selenium-webdriver/testing');
 
 test.describe('exercises', function() {
   var driver;
-  this.timeout(10000);
+  this.timeout(1000000);
 
   test.beforeEach(function() {
     driver = new webdriver.Builder()
@@ -179,6 +179,97 @@ test.describe('exercises', function() {
 
     driver.findElements({css: 'tr:nth-child(2)'}).then(function(element){
       assert.equal(0, element);
+    });
+  });
+
+  test.it('if name is clicked it becomes an input field that will display that saves if you click hit return', function(){
+    driver.get('http://localhost:8080/exercises.html');
+
+    var name = driver.findElement({id: 'new-exercise-name'});
+    var calories = driver.findElement({id: 'new-exercise-calories'});
+    var submitButton = driver.findElement({id: 'new-submit'});
+
+    name.sendKeys('name');
+    calories.sendKeys('456');
+    submitButton.click();
+
+    driver.sleep(1000);
+
+    var exerciseCell = driver.findElement({css: 'td.enclosed-cells:nth-child(1)'})
+
+    exerciseCell.click()
+    driver.sleep(1000);
+
+    exerciseCell.clear()
+
+    exerciseCell.sendKeys("Newer Name")
+    exerciseCell.sendKeys(webdriver.Key.RETURN)
+
+
+
+    driver.findElement({css: 'td.enclosed-cells:nth-child(1)'}).getText().then(function(textValue) {
+      assert.equal(textValue, "Newer Name");
+    });
+  });
+
+  test.it('if calorie is clicked it becomes an input field that will display and that saves changes if you  hit return', function(){
+    driver.get('http://localhost:8080/exercises.html');
+
+    var name = driver.findElement({id: 'new-exercise-name'});
+    var calories = driver.findElement({id: 'new-exercise-calories'});
+    var submitButton = driver.findElement({id: 'new-submit'});
+
+    name.sendKeys('name');
+    calories.sendKeys('456');
+    submitButton.click();
+
+    driver.sleep(1000);
+
+    var exerciseCell = driver.findElement({css: 'td.enclosed-cells:nth-child(2)'})
+
+    exerciseCell.click()
+    driver.sleep(1000);
+
+    exerciseCell.clear()
+
+    exerciseCell.sendKeys("999")
+    exerciseCell.sendKeys(webdriver.Key.RETURN)
+
+
+
+    driver.findElement({css: 'td.enclosed-cells:nth-child(2)'}).getText().then(function(textValue) {
+      assert.equal(textValue, "999");
+    });
+  });
+
+  test.it("it only shows the foods by name if they have the same name fragment", function(){
+    driver.get('http://localhost:8080/exercises.html');
+
+    var name = driver.findElement({id: 'new-exercise-name'});
+    var calories = driver.findElement({id: 'new-exercise-calories'});
+    var submitButton = driver.findElement({id: 'new-submit'});
+    var filterInput =  driver.findElement({id: "filter-by-name"});
+
+    name.sendKeys('running');
+    calories.sendKeys('123');
+    submitButton.click();
+
+    name.sendKeys('diving');
+    calories.sendKeys('987');
+    submitButton.click();
+
+    name.sendKeys('scuba diving');
+    calories.sendKeys('456');
+    submitButton.click();
+
+    driver.sleep(1000);
+
+    filterInput.sendKeys("div")
+
+    driver.findElement({id: 'exercise-table'}).getText().then(function(textValue) {
+      assert.include(textValue, "diving");
+      assert.include(textValue, "scuba diving");
+      assert.notInclude(textValue, "running");
     });
   });
 });
