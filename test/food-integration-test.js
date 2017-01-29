@@ -15,36 +15,6 @@ test.describe('foods', function() {
   test.afterEach(function() {
     driver.quit();
   })
-  test.it('if name is clicked it becomes an input field that will display that saves if you click elsewhere', function(){
-    driver.get('http://localhost:8080/foods.html');
-
-    var name = driver.findElement({id: 'new-food-name'});
-    var calories = driver.findElement({id: 'new-food-calories'});
-    var submitButton = driver.findElement({id: 'new-submit'});
-
-    name.sendKeys('name');
-    calories.sendKeys('456');
-    submitButton.click();
-
-    driver.sleep(1000);
-
-    var foodCell = driver.findElement({css: 'td.enclosed-cells:nth-child(1)'})
-
-    foodCell.click()
-    driver.sleep(1000);
-
-    foodCell.clear()
-
-    foodCell.sendKeys("Newer Name")
-    foodCell.sendKeys(webdriver.Key.RETURN)
-
-
-
-    driver.findElement({css: 'td.enclosed-cells:nth-child(1)'}).getText().then(function(textValue) {
-      assert.equal(textValue, "Newer Name");
-    });
-  });
-
   test.xit('should allow me to add a food name and calories', function() {
     driver.get('http://localhost:8080/foods.html');
 
@@ -208,6 +178,66 @@ test.describe('foods', function() {
 
     driver.findElements({css: 'tr:nth-child(2)'}).then(function(element){
       assert.equal(0, element);
+    });
+  });
+
+  test.it('if name is clicked it becomes an input field that will display that saves if you click elsewhere', function(){
+    driver.get('http://localhost:8080/foods.html');
+
+    var name = driver.findElement({id: 'new-food-name'});
+    var calories = driver.findElement({id: 'new-food-calories'});
+    var submitButton = driver.findElement({id: 'new-submit'});
+
+    name.sendKeys('name');
+    calories.sendKeys('456');
+    submitButton.click();
+
+    driver.sleep(1000);
+
+    var foodCell = driver.findElement({css: 'td.enclosed-cells:nth-child(1)'})
+
+    foodCell.click()
+    driver.sleep(1000);
+
+    foodCell.clear()
+
+    foodCell.sendKeys("Newer Name")
+    foodCell.sendKeys(webdriver.Key.RETURN)
+
+
+
+    driver.findElement({css: 'td.enclosed-cells:nth-child(1)'}).getText().then(function(textValue) {
+      assert.equal(textValue, "Newer Name");
+    });
+  });
+
+  test.it('if calories field is clicked it becomes an input field that will display that saves if you click elsewhere', function(){
+    driver.get('http://localhost:8080/foods.html');
+
+    var name = driver.findElement({id: 'new-food-name'});
+    var calories = driver.findElement({id: 'new-food-calories'});
+    var submitButton = driver.findElement({id: 'new-submit'});
+
+    name.sendKeys('name');
+    calories.sendKeys('456');
+    submitButton.click();
+
+    driver.sleep(1000);
+
+    var calorieCell = driver.findElement({css: 'td.enclosed-cells:nth-child(2)'})
+
+    calorieCell.click()
+    driver.sleep(1000);
+
+    calorieCell.clear()
+
+    calorieCell.sendKeys("1111")
+    calorieCell.sendKeys(webdriver.Key.RETURN)
+
+
+
+    driver.findElement({css: 'td.enclosed-cells:nth-child(2)'}).getText().then(function(textValue) {
+      assert.equal(textValue, "1111");
     });
   });
 });
