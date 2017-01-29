@@ -16,7 +16,7 @@ test.describe('foods', function() {
     driver.quit();
   })
 
-  test.xit('should allow me to add a food name and calories', function() {
+  test.it('should allow me to add a food name and calories', function() {
     driver.get('http://localhost:8080/foods.html');
 
     var name = driver.findElement({id: 'new-food-name'});
@@ -33,7 +33,7 @@ test.describe('foods', function() {
     });
   });
 
-  test.xit('should allow me to create a food', function() {
+  test.it('should allow me to create a food', function() {
     driver.get('http://localhost:8080/foods.html');
 
     var name = driver.findElement({id: 'new-food-name'});
@@ -51,7 +51,7 @@ test.describe('foods', function() {
     });
   })
 
-  test.xit("can set localStorage and persist across refreshes", function(){
+  test.it("can set localStorage and persist across refreshes", function(){
     driver.get("http://localhost:8080/webpack-dev-server/");
     driver.executeScript("window.localStorage.setItem('foods', '{cheetos:1000}')");
 
@@ -62,7 +62,7 @@ test.describe('foods', function() {
     });
   })
 
-  test.xit("it prepends the added food below the headers above the other foods", function(){
+  test.it("it prepends the added food below the headers above the other foods", function(){
     driver.get('http://localhost:8080/foods.html');
     var name = driver.findElement({id: 'new-food-name'});
     var calories = driver.findElement({id: 'new-food-calories'});
@@ -87,7 +87,7 @@ test.describe('foods', function() {
     });
   });
 
-  test.xit("it clears the input fields after a food is successfully submitted", function(){
+  test.it("it clears the input fields after a food is successfully submitted", function(){
     driver.get('http://localhost:8080/foods.html');
     var name = driver.findElement({id: 'new-food-name'});
     var calories = driver.findElement({id: 'new-food-calories'});
@@ -112,7 +112,7 @@ test.describe('foods', function() {
     });
   });
 
-  test.xit("foods persist after the page is refreshed and display in the correct order", function(){
+  test.it("foods persist after the page is refreshed and display in the correct order", function(){
     driver.get('http://localhost:8080/foods.html');
     var name = driver.findElement({id: 'new-food-name'});
     var calories = driver.findElement({id: 'new-food-calories'});
@@ -163,7 +163,7 @@ test.describe('foods', function() {
     });
   });
 
-  test.xit('removes the food from the table when you click the delete button on that line', function() {
+  test.it('removes the food from the table when you click the delete button on that line', function() {
     driver.get('http://localhost:8080/foods.html')
     var name = driver.findElement({id: 'new-food-name'});
     var calories = driver.findElement({id: 'new-food-calories'});
@@ -241,4 +241,35 @@ test.describe('foods', function() {
       assert.equal(textValue, "1111");
     });
   });
+
+  test.it("it only shows the foods by name if they have the same name fragment", function(){
+    driver.get('http://localhost:8080/foods.html');
+    var name = driver.findElement({id: 'new-food-name'});
+    var calories = driver.findElement({id: 'new-food-calories'});
+    var submitButton = driver.findElement({id: 'new-submit'});
+    var filterInput =  driver.findElement({id: "filter-by-name"});
+
+    name.sendKeys('cheese');
+    calories.sendKeys('123');
+    submitButton.click();
+
+    name.sendKeys('amazing cheesits');
+    calories.sendKeys('987');
+    submitButton.click();
+
+    name.sendKeys('def not yellow stuff');
+    calories.sendKeys('456');
+    submitButton.click();
+
+    driver.sleep(1000);
+
+    filterInput.sendKeys("chee")
+
+    driver.findElement({id: 'food-table'}).getText().then(function(textValue) {
+      assert.include(textValue, "cheese");
+      assert.include(textValue, "amazing cheesits");
+      assert.notInclude(textValue, "def not yellow stuff");
+    });
+  });
+
 });

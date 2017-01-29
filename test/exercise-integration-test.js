@@ -4,7 +4,7 @@ var test      = require('selenium-webdriver/testing');
 
 test.describe('exercises', function() {
   var driver;
-  this.timeout(10000);
+  this.timeout(1000000);
 
   test.beforeEach(function() {
     driver = new webdriver.Builder()
@@ -16,7 +16,7 @@ test.describe('exercises', function() {
     driver.quit();
   })
 
-  test.xit('should allow me to add an exercise name and calories', function() {
+  test.it('should allow me to add an exercise name and calories', function() {
     driver.get('http://localhost:8080/exercises.html');
 
     var name = driver.findElement({id: 'new-exercise-name'});
@@ -33,7 +33,7 @@ test.describe('exercises', function() {
     });
   });
 
-  test.xit('should allow me to create a exercise', function() {
+  test.it('should allow me to create a exercise', function() {
     driver.get('http://localhost:8080/exercises.html');
 
     var name = driver.findElement({id: 'new-exercise-name'});
@@ -51,7 +51,7 @@ test.describe('exercises', function() {
     });
   })
 
-  test.xit("can set localStorage and persist across refreshes", function(){
+  test.it("can set localStorage and persist across refreshes", function(){
     driver.get("http://localhost:8080/webpack-dev-server/");
     driver.executeScript("window.localStorage.setItem('exercises', '{cheetos:1000}')");
 
@@ -62,7 +62,7 @@ test.describe('exercises', function() {
     });
   })
 
-  test.xit("it prepends the added exercise below the headers above the other exercises", function(){
+  test.it("it prepends the added exercise below the headers above the other exercises", function(){
     driver.get('http://localhost:8080/exercises.html');
     var name = driver.findElement({id: 'new-exercise-name'});
     var calories = driver.findElement({id: 'new-exercise-calories'});
@@ -87,7 +87,7 @@ test.describe('exercises', function() {
     });
   });
 
-  test.xit("it clears the input fields after a exercise is successfully submitted", function(){
+  test.it("it clears the input fields after a exercise is successfully submitted", function(){
     driver.get('http://localhost:8080/exercises.html');
     var name = driver.findElement({id: 'new-exercise-name'});
     var calories = driver.findElement({id: 'new-exercise-calories'});
@@ -112,7 +112,7 @@ test.describe('exercises', function() {
     });
   });
 
-  test.xit("exercises persist after the page is refreshed and display in the correct order", function(){
+  test.it("exercises persist after the page is refreshed and display in the correct order", function(){
     driver.get('http://localhost:8080/exercises.html');
     var name = driver.findElement({id: 'new-exercise-name'});
     var calories = driver.findElement({id: 'new-exercise-calories'});
@@ -163,7 +163,7 @@ test.describe('exercises', function() {
     });
   });
 
-  test.xit('removes the exercise from the table when you click the delete button on that line', function() {
+  test.it('removes the exercise from the table when you click the delete button on that line', function() {
     driver.get('http://localhost:8080/exercises.html')
     var name = driver.findElement({id: 'new-exercise-name'});
     var calories = driver.findElement({id: 'new-exercise-calories'});
@@ -242,4 +242,34 @@ test.describe('exercises', function() {
     });
   });
 
+  test.it("it only shows the foods by name if they have the same name fragment", function(){
+    driver.get('http://localhost:8080/exercises.html');
+
+    var name = driver.findElement({id: 'new-exercise-name'});
+    var calories = driver.findElement({id: 'new-exercise-calories'});
+    var submitButton = driver.findElement({id: 'new-submit'});
+    var filterInput =  driver.findElement({id: "filter-by-name"});
+
+    name.sendKeys('running');
+    calories.sendKeys('123');
+    submitButton.click();
+
+    name.sendKeys('diving');
+    calories.sendKeys('987');
+    submitButton.click();
+
+    name.sendKeys('scuba diving');
+    calories.sendKeys('456');
+    submitButton.click();
+
+    driver.sleep(1000);
+
+    filterInput.sendKeys("div")
+
+    driver.findElement({id: 'exercise-table'}).getText().then(function(textValue) {
+      assert.include(textValue, "diving");
+      assert.include(textValue, "scuba diving");
+      assert.notInclude(textValue, "running");
+    });
+  });
 });
