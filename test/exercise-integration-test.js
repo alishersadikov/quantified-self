@@ -16,7 +16,7 @@ test.describe('exercises', function() {
     driver.quit();
   })
 
-  test.it('should allow me to add an exercise name and calories', function() {
+  test.xit('should allow me to add an exercise name and calories', function() {
     driver.get('http://localhost:8080/exercises.html');
 
     var name = driver.findElement({id: 'new-exercise-name'});
@@ -33,7 +33,7 @@ test.describe('exercises', function() {
     });
   });
 
-  test.it('should allow me to create a exercise', function() {
+  test.xit('should allow me to create a exercise', function() {
     driver.get('http://localhost:8080/exercises.html');
 
     var name = driver.findElement({id: 'new-exercise-name'});
@@ -51,7 +51,7 @@ test.describe('exercises', function() {
     });
   })
 
-  test.it("can set localStorage and persist across refreshes", function(){
+  test.xit("can set localStorage and persist across refreshes", function(){
     driver.get("http://localhost:8080/webpack-dev-server/");
     driver.executeScript("window.localStorage.setItem('exercises', '{cheetos:1000}')");
 
@@ -62,7 +62,7 @@ test.describe('exercises', function() {
     });
   })
 
-  test.it("it prepends the added exercise below the headers above the other exercises", function(){
+  test.xit("it prepends the added exercise below the headers above the other exercises", function(){
     driver.get('http://localhost:8080/exercises.html');
     var name = driver.findElement({id: 'new-exercise-name'});
     var calories = driver.findElement({id: 'new-exercise-calories'});
@@ -87,7 +87,7 @@ test.describe('exercises', function() {
     });
   });
 
-  test.it("it clears the input fields after a exercise is successfully submitted", function(){
+  test.xit("it clears the input fields after a exercise is successfully submitted", function(){
     driver.get('http://localhost:8080/exercises.html');
     var name = driver.findElement({id: 'new-exercise-name'});
     var calories = driver.findElement({id: 'new-exercise-calories'});
@@ -112,7 +112,7 @@ test.describe('exercises', function() {
     });
   });
 
-  test.it("exercises persist after the page is refreshed and display in the correct order", function(){
+  test.xit("exercises persist after the page is refreshed and display in the correct order", function(){
     driver.get('http://localhost:8080/exercises.html');
     var name = driver.findElement({id: 'new-exercise-name'});
     var calories = driver.findElement({id: 'new-exercise-calories'});
@@ -163,7 +163,7 @@ test.describe('exercises', function() {
     });
   });
 
-  test.it('removes the exercise from the table when you click the delete button on that line', function() {
+  test.xit('removes the exercise from the table when you click the delete button on that line', function() {
     driver.get('http://localhost:8080/exercises.html')
     var name = driver.findElement({id: 'new-exercise-name'});
     var calories = driver.findElement({id: 'new-exercise-calories'});
@@ -181,4 +181,65 @@ test.describe('exercises', function() {
       assert.equal(0, element);
     });
   });
+
+  test.it('if name is clicked it becomes an input field that will display that saves if you click hit return', function(){
+    driver.get('http://localhost:8080/exercises.html');
+
+    var name = driver.findElement({id: 'new-exercise-name'});
+    var calories = driver.findElement({id: 'new-exercise-calories'});
+    var submitButton = driver.findElement({id: 'new-submit'});
+
+    name.sendKeys('name');
+    calories.sendKeys('456');
+    submitButton.click();
+
+    driver.sleep(1000);
+
+    var exerciseCell = driver.findElement({css: 'td.enclosed-cells:nth-child(1)'})
+
+    exerciseCell.click()
+    driver.sleep(1000);
+
+    exerciseCell.clear()
+
+    exerciseCell.sendKeys("Newer Name")
+    exerciseCell.sendKeys(webdriver.Key.RETURN)
+
+
+
+    driver.findElement({css: 'td.enclosed-cells:nth-child(1)'}).getText().then(function(textValue) {
+      assert.equal(textValue, "Newer Name");
+    });
+  });
+
+  test.it('if calorie is clicked it becomes an input field that will display and that saves changes if you  hit return', function(){
+    driver.get('http://localhost:8080/exercises.html');
+
+    var name = driver.findElement({id: 'new-exercise-name'});
+    var calories = driver.findElement({id: 'new-exercise-calories'});
+    var submitButton = driver.findElement({id: 'new-submit'});
+
+    name.sendKeys('name');
+    calories.sendKeys('456');
+    submitButton.click();
+
+    driver.sleep(1000);
+
+    var exerciseCell = driver.findElement({css: 'td.enclosed-cells:nth-child(2)'})
+
+    exerciseCell.click()
+    driver.sleep(1000);
+
+    exerciseCell.clear()
+
+    exerciseCell.sendKeys("999")
+    exerciseCell.sendKeys(webdriver.Key.RETURN)
+
+
+
+    driver.findElement({css: 'td.enclosed-cells:nth-child(2)'}).getText().then(function(textValue) {
+      assert.equal(textValue, "999");
+    });
+  });
+
 });
