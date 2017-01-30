@@ -154,19 +154,6 @@ div .totals {
   text-align: center;
 }
 
-#add-to-breakfast {
-  display: inline-block;
-  float: left;
-}
-#add-to-lunch {
-  display: inline-block;
-  float: right; 
-}
-
-.top-two-buttons
-
-
-
 /* --------------------------------EXERCISE---------------------------------*/
 
 .exercise-controls {
