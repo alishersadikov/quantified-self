@@ -161,3 +161,7 @@ div .totals {
   top: 650px;
   left: 450px;
 }
+
+.green-text {
+  color: green;
+}
