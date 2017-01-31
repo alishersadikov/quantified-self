@@ -1,8 +1,32 @@
-# Quantified Self Webpack
+# Quantified Self
+Quantified Self is an application built in JavaScript <strong>to help track calorie intake and expenditure in a diary form.</strong>  
 
-To get you started building your Quantified Self app.
+## Setup
 
-## Initial Setup
+To get started, clone the project: 
+
+  ```shell
+  git clone https://github.com/alishersadikov/quantified-self.git
+  ```
+  Change into the directory: 
+  ```shell
+  cd quantified-self
+  ```
+  This project is built with Webpack. Therefore, to set it up: 
+  
+  ```shell
+  npm install
+  ```
+  To start the server locally: 
+  ```shell
+   npm start
+  ```
+  
+  You should now be able to browse the application on browser of choice by entering: 
+  ```shell
+  http://localhost:8080
+  ```
+
 
 One person from your project will set up the repository. That one person should follow these steps:
 
