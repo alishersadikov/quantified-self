@@ -1,170 +1,180 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Quantified Self - Diary</title>
-  <link rel="stylesheet" type="text/css" href="/lib/styles/homepage.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="utf-8">
+    <title>Quantified Self - Diary</title>
+    <link rel="stylesheet" type="text/css" href="/lib/styles/homepage.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-</head>
-<body>
-<div class="container">
-  <button class="edges left-arrow">
-    <i class="fa fa-arrow-left" aria-hidden="true"></i>
-  </button>
+  </head>
+  <body>
+    <div class="container">
+      <button class="edges left-arrow">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      </button>
 
-  <marquee behavior="scroll" loop="-1" width="30%" class="date">
-   <i>
-    <strong>
-       <span class="today"></span>
-    </strong>
-   </i>
-  </marquee>
+      <marquee behavior="scroll" loop="-1" width="30%" class="date">
+       <i>
+        <strong>
+           <span class="today"></span>
+        </strong>
+       </i>
+      </marquee>
 
-  <button class="edges right-arrow">
-    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-  </button>
-</div>
+      <button class="edges right-arrow">
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </button>
+    </div>
 
-<div class="table-container">
-  <div class="breakfast">
-    <table id="diary-breakfast" class="display-table">
-      <tr>
-        <th class="enclosed-cells">Name</th>
-        <th class="enclosed-cells">Calories</th>
-        <th></th>
-      </tr>
-      <tbody id="breakfast-tbody">
-        <tr class="enclosed-cells">
-          <td class-"enclosed-cells">BREAKFAST</td>
-          <td class="enclosed-cells">100</td>
-          <td>delete</td>
-        </tr>
-        <tr class="enclosed-cells">
-          <td class-"enclosed-cells">muffin</td>
-          <td class="enclosed-cells">70</td>
-          <td>delete</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="table-container">
+      <div class="breakfast">
+        <h4>Breakfast</h4>
+        <table id="diary-breakfast" class="display-table">
+          <thead>
+            <tr>
+              <th class="enclosed-cells">Name</th>
+              <th class="enclosed-cells">Calories</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="breakfast-tbody">
+          </tbody>
+        </table>
+      </div>
 
-  <div class="lunch">
-    <table id="diary-lunch" class="display-table">
-      <tr>
-        <th class="enclosed-cells">Name</th>
-        <th class="enclosed-cells">Calories</th>
-        <th></th>
-      </tr>
-      <tbody id="lunch-tbody">
-        <tr class="enclosed-cells">
-          <td class-"enclosed-cells">LUNCH</td>
-          <td class="enclosed-cells">100</td>
-          <td>delete</td>
-        </tr>
-        <tr class="enclosed-cells">
-          <td class-"enclosed-cells">muffin</td>
-          <td class="enclosed-cells">70</td>
-          <td>delete</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+      <div class="lunch">
+        <h4>Lunch</h4>
+        <table id="diary-lunch" class="display-table">
+          <thead>
+            <tr>
+              <th class="enclosed-cells">Name</th>
+              <th class="enclosed-cells">Calories</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="lunch-tbody">
+          </tbody>
+        </table>
+      </div>
 
-  <div class="dinner">
-    <table id="diary-dinner" class="display-table">
-      <tr>
-        <th class="enclosed-cells">Name</th>
-        <th class="enclosed-cells">Calories</th>
-        <th></th>
-      </tr>
-      <tbody id="dinner-tbody">
-        <tr class="enclosed-cells">
-          <td class-"enclosed-cells">DINNER</td>
-          <td class="enclosed-cells">100</td>
-          <td>delete</td>
-        </tr>
-        <tr class="enclosed-cells">
-          <td class-"enclosed-cells">muffin</td>
-          <td class="enclosed-cells">70</td>
-          <td>delete</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+      <div class="dinner">
+        <h4>Dinner</h4>
+        <table id="diary-dinner" class="display-table">
+          <thead>
+            <tr>
+              <th class="enclosed-cells">Name</th>
+              <th class="enclosed-cells">Calories</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="dinner-tbody">
+          </tbody>
+        </table>
+      </div>
 
-  <div class="snacks">
-    <table id="diary-snacks" class="display-table">
-      <tr>
-        <th class="enclosed-cells">SNACKS</th>
-        <th class="enclosed-cells">Calories</th>
-        <th></th>
-      </tr>
-      <tbody id="snacks-tbody">
-        <tr class="enclosed-cells">
-          <td class-"enclosed-cells">banana</td>
-          <td class="enclosed-cells">100</td>
-          <td>delete</td>
-        </tr>
-        <tr class="enclosed-cells">
-          <td class-"enclosed-cells">muffin</td>
-          <td class="enclosed-cells">70</td>
-          <td>delete</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+      <div class="snacks">
+        <h4>Snacks</h4>
+        <table id="diary-snacks" class="display-table">
+          <thead>
+            <tr>
+              <th class="enclosed-cells">Name</th>
+              <th class="enclosed-cells">Calories</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="snacks-tbody">
+          </tbody>
+        </table>
+      </div>
 
-  <div class="exercise">
-    <table id="diary-exercise" class="display-table">
-      <tr>
-        <th class="enclosed-cells">Name</th>
-        <th class="enclosed-cells">Calories</th>
-        <th></th>
-      </tr>
-      <tbody id="exercise-tbody">
-        <tr class="enclosed-cells">
-          <td class-"enclosed-cells">EXERCISES</td>
-          <td class="enclosed-cells">100</td>
-          <td>delete</td>
-        </tr>
-        <tr class="enclosed-cells">
-          <td class-"enclosed-cells">muffin</td>
-          <td class="enclosed-cells">70</td>
-          <td>delete</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+      <div class="exercise">
+        <h4>Exercises</h4>
+        <table id="diary-exercise" class="display-table">
+          <thead>
+            <tr>
+              <th class="enclosed-cells">Name</th>
+              <th class="enclosed-cells">Calories</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="exercise-tbody">
+          </tbody>
+        </table>
+      </div>
 
-  <div class="totals">
-    <table id="diary-totals" class="display-table">
-      <tr>
-        <th class="enclosed-cells">Name</th>
-        <th class="enclosed-cells">Calories</th>
-        <th></th>
-      </tr>
-      <tbody id="totals-tbody">
-        <tr class="enclosed-cells">
-          <td class-"enclosed-cells">TOTALS</td>
-          <td class="enclosed-cells">100</td>
-          <td>delete</td>
-        </tr>
-        <tr class="enclosed-cells">
-          <td class-"enclosed-cells">muffin</td>
-          <td class="enclosed-cells">70</td>
-          <td>delete</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-  <script src="diary.bundle.js"></script>
-</body>
+      <div class="totals">
+        <h4>Totals</h4>
+        <table id="diary-totals" class="display-table">
+          <tbody id="totals-tbody">
+          </tbody>
+        </table>
+      </div>
+<!-- FOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOD -->
+      <div class="food-controls">
+        <h3> Foods </h3>
+        <div class="input-container">
+          <button type="button" name="button" class="btn-info btn-sm" onclick="location.href='/foods.html'">Create New</button><br>
+          <h5>Add selected to: </h5>
+          <div class="top-two-buttons">
+            <button id="add-to-breakfast" type="button" name="button" class="btn-info btn-sm">Breakfast</button>
+            <button id="add-to-lunch" type="button" name="button" class="btn-info btn-sm">Lunch</button>
+          </div>
+          <div class="bottom-two-buttons">
+            <button id="add-to-dinner" type="button" name="button" class="btn-info btn-sm">Dinner</button>
+            <button id="add-to-snacks" type="button" name="button" class="btn-info btn-sm">Snacks</button>
+          </div>
+
+          <p>Filter by Name:</p>
+          <input type="text" id="filter-food-by-name" class="input-field"  placeholder="Search by name">
+          <br>
+        </div>
+        <br>
+
+        <table id="food-table" class="display-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="enclosed-cells">Name</th>
+              <th class="enclosed-cells">Calories</th>
+            </tr>
+          </thead>
+          <tbody id="food-table-body">
+          </tbody>
+        </table>
+      </div>
+    <!--- exercise------------------------------------------------------------>
+
+    <div class="exercise-controls">
+      <h3> Exercises</h3>
+      <div class="input-container">
+        <button type="button" name="button" class="btn-info btn-sm" onclick="location.href='/exercises.html'">Create New</button>
+        <button id="add-to-exercise" type="button" name="button" class="btn-info btn-sm">Add Selected</button>
+
+        <p>Filter by Name:</p>
+        <input type="text" id="filter-exercise-by-name" class="input-field"  placeholder="Search by name">
+        <br>
+      </div>
+      <br>
+
+      <table id="exercise-table" class="display-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="enclosed-cells">Name</th>
+            <th class="enclosed-cells">Calories</th>
+          </tr>
+        </thead>
+        <tbody id="exercise-table-body">
+        </tbody>
+      </table>
+    </div>
+    <!-- <script src="/lib/homepage.js"></script> -->
+    <script src="diary.bundle.js"></script>
+  </body>
 </html>
