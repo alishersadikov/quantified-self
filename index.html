@@ -121,15 +121,13 @@
         <div class="input-container">
           <button type="button" name="button" class="btn-info btn-sm" onclick="location.href='./foods.html'">Create New</button><br>
           <h5>Add selected to: </h5>
-          <div class="top-two-buttons">
+          <div class="buttons">
             <button id="add-to-breakfast" type="button" name="button" class="btn-info btn-sm">Breakfast</button>
             <button id="add-to-lunch" type="button" name="button" class="btn-info btn-sm">Lunch</button>
-          </div>
-          <div class="bottom-two-buttons">
             <button id="add-to-dinner" type="button" name="button" class="btn-info btn-sm">Dinner</button>
             <button id="add-to-snacks" type="button" name="button" class="btn-info btn-sm">Snacks</button>
           </div>
-
+          <br>
           <p>Filter by Name:</p>
           <input type="text" id="filter-food-by-name" class="input-field"  placeholder="Search by name">
           <br>
@@ -153,15 +151,16 @@
     <div class="exercise-controls">
       <h3> Exercises</h3>
       <div class="input-container">
-        <button type="button" name="button" class="btn-info btn-sm" onclick="location.href='./exercises.html'">Create New</button>
-        <button id="add-to-exercise" type="button" name="button" class="btn-info btn-sm">Add Selected</button>
-
+        <div class="button">
+          <button type="button" name="button" class="btn-info btn-sm" onclick="location.href='./exercises.html'">Create New</button>
+          <button id="add-to-exercise" type="button" name="button" class="btn-info btn-sm">Add Selected</button>
+        </div>
+        <br>
         <p>Filter by Name:</p>
         <input type="text" id="filter-exercise-by-name" class="input-field"  placeholder="Search by name">
         <br>
       </div>
       <br>
-
       <table id="exercise-table" class="display-table">
         <thead>
           <tr>
