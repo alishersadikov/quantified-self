@@ -2,10 +2,7 @@ var assert    = require('chai').assert;
 // import { assert } from 'chai'
 var webdriver = require('selenium-webdriver');
 var test      = require('selenium-webdriver/testing');
-
 require('locus')
-
-
 
 test.describe('foods', function() {
   var driver;
@@ -20,9 +17,6 @@ test.describe('foods', function() {
   test.afterEach(function() {
     driver.quit();
   })
-
-
-
 
   test.it.only('add food / delete to breakfast changes persist in diary', function() {
 
@@ -59,9 +53,8 @@ test.describe('foods', function() {
 
     // Add foods to breakfast lunch and dinner and snacks
 
-      // Select foods and add them to table
-      driver.get('http://localhost:8080/index.html');
-
+    // Select foods and add them to table
+    driver.get('http://localhost:8080/index.html');
 
     var foodOneCheckbox = driver.findElement({css: "tbody#food-table-body > tr:nth-child(1) td:nth-child(1) > input[type='checkbox']"});
     var foodTwoCheckbox = driver.findElement({css: "tbody#food-table-body > tr:nth-child(2) td:nth-child(1) > input[type='checkbox']"});
