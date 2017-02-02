@@ -5,7 +5,7 @@
 .edges {
   height: 40px;
   width: 40px;
-  background-color: #8effa1
+  background-color: #ddd9e0
 ;
   display: inline-block;
   border: 2px solid gray;
@@ -28,7 +28,7 @@
   top: 16.4px;
   height: 40px;
   width: 300px;
-  background-color: #8effa1
+  background-color: #ddd9e0
 ;
   display: inline-block;
   border: 2px solid gray;
@@ -112,7 +112,7 @@ div .totals {
   padding-top: 50px;
   height: 1500px;
   width: 800px;
-  background-color: #8effa1
+  background-color: #ddd9e0
 ;
   position: relative;
   margin: 20px auto 0 auto;
@@ -157,6 +157,7 @@ div .totals {
 /* --------------------------------EXERCISE---------------------------------*/
 
 .exercise-controls {
+  margin-top: 67px;
   position: absolute;
   top: 650px;
   left: 450px;
