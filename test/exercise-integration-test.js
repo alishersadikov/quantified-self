@@ -4,7 +4,7 @@ var test      = require('selenium-webdriver/testing');
 
 test.describe('exercises', function() {
   var driver;
-  this.timeout(1000000);
+  this.timeout(10000);
 
   test.beforeEach(function() {
     driver = new webdriver.Builder()

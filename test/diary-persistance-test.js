@@ -2,11 +2,10 @@ var assert    = require('chai').assert;
 // import { assert } from 'chai'
 var webdriver = require('selenium-webdriver');
 var test      = require('selenium-webdriver/testing');
-require('locus')
 
 test.describe('foods', function() {
   var driver;
-  this.timeout(10000000);
+  this.timeout(10000);
 
   test.beforeEach(function() {
     driver = new webdriver.Builder()
@@ -18,7 +17,7 @@ test.describe('foods', function() {
     driver.quit();
   })
 
-  test.it.only('add food / delete to breakfast changes persist in diary', function() {
+  test.it('add food / delete to breakfast changes persist in diary', function() {
 
     // CREATE FOODS
 
@@ -63,7 +62,7 @@ test.describe('foods', function() {
 
     var addToBreakFastButton = driver.findElement({css: "button#add-to-breakfast.btn-info.btn-sm"});
     addToBreakFastButton.click();
-    driver.sleep(10000000)
+    driver.sleep(1000)
     // debugger;
 
     driver.findElement({id: 'breakfast-tbody'}).getText().then(function(textValue) {
