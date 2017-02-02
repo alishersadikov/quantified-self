@@ -3,9 +3,9 @@ var assert    = require('chai').assert;
 var webdriver = require('selenium-webdriver');
 var test      = require('selenium-webdriver/testing');
 
-test.describe('sorting', function() {
+test.describe('sorting foods', function() {
   var driver;
-  this.timeout(10000000);
+  this.timeout(10000);
 
   test.beforeEach(function() {
     driver = new webdriver.Builder()
@@ -17,7 +17,7 @@ test.describe('sorting', function() {
     driver.quit();
   })
 
-  test.it('clicking food calories header the first time sorts foods by calories in ascending order', function() {
+  test.it('clicking the first time sorts in ascending order', function() {
 
     // CREATE FOODS
 
@@ -72,7 +72,7 @@ test.describe('sorting', function() {
     });
   });
 
-  test.it('clicking food calories header the second time sorts foods by calories in descending order', function() {
+  test.it('clicking the second time sorts in descending order', function() {
 
     // CREATE FOODS
 
@@ -93,7 +93,6 @@ test.describe('sorting', function() {
     name.sendKeys("food3");
     calories.sendKeys("333");
     submitButton.click();
-
 
     driver.get('http://localhost:8080');
     driver.sleep(1000)
@@ -128,7 +127,7 @@ test.describe('sorting', function() {
     });
   });
 
-  test.it('clicking food calories header the third time sorts foods by calories in original order', function() {
+  test.it('clicking the third time sorts in the original order', function() {
 
     // CREATE FOODS
 
@@ -149,7 +148,6 @@ test.describe('sorting', function() {
     name.sendKeys("food3");
     calories.sendKeys("333");
     submitButton.click();
-
 
     driver.get('http://localhost:8080');
     driver.sleep(1000);
