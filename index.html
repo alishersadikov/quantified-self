@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Quantified Self - Diary</title>
-    <link rel="stylesheet" type="text/css" href="/lib/styles/homepage.css">
+    <link rel="stylesheet" type="text/css" href="./lib/styles/homepage.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Optional theme -->
@@ -119,17 +119,15 @@
       <div class="food-controls">
         <h3> Foods </h3>
         <div class="input-container">
-          <button type="button" name="button" class="btn-info btn-sm" onclick="location.href='/foods.html'">Create New</button><br>
+          <button type="button" name="button" class="btn-info btn-sm" onclick="location.href='./foods.html'">Create New</button><br>
           <h5>Add selected to: </h5>
-          <div class="top-two-buttons">
+          <div class="buttons">
             <button id="add-to-breakfast" type="button" name="button" class="btn-info btn-sm">Breakfast</button>
             <button id="add-to-lunch" type="button" name="button" class="btn-info btn-sm">Lunch</button>
-          </div>
-          <div class="bottom-two-buttons">
             <button id="add-to-dinner" type="button" name="button" class="btn-info btn-sm">Dinner</button>
             <button id="add-to-snacks" type="button" name="button" class="btn-info btn-sm">Snacks</button>
           </div>
-
+          <br>
           <p>Filter by Name:</p>
           <input type="text" id="filter-food-by-name" class="input-field"  placeholder="Search by name">
           <br>
@@ -153,15 +151,16 @@
     <div class="exercise-controls">
       <h3> Exercises</h3>
       <div class="input-container">
-        <button type="button" name="button" class="btn-info btn-sm" onclick="location.href='/exercises.html'">Create New</button>
-        <button id="add-to-exercise" type="button" name="button" class="btn-info btn-sm">Add Selected</button>
-
+        <div class="button">
+          <button type="button" name="button" class="btn-info btn-sm" onclick="location.href='./exercises.html'">Create New</button>
+          <button id="add-to-exercise" type="button" name="button" class="btn-info btn-sm">Add Selected</button>
+        </div>
+        <br>
         <p>Filter by Name:</p>
         <input type="text" id="filter-exercise-by-name" class="input-field"  placeholder="Search by name">
         <br>
       </div>
       <br>
-
       <table id="exercise-table" class="display-table">
         <thead>
           <tr>
