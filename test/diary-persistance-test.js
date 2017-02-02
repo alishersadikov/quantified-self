@@ -24,7 +24,7 @@ test.describe('foods', function() {
 
 
 
-  test.it.only('add food / delete to breakfast changes persist in diary', function() {
+  test.it('add food / delete to breakfast changes persist in diary', function() {
 
     // CREATE FOODS
 
@@ -72,6 +72,59 @@ test.describe('foods', function() {
     addToBreakFastButton.click();
     driver.sleep(10000000)
     // debugger;
+
+    driver.findElement({id: 'breakfast-tbody'}).getText().then(function(textValue) {
+      assert.include(textValue, "food 1");
+      assert.include(textValue, "food 2");
+      assert.include(textValue, "100");
+      assert.include(textValue, "200");
+    });
+
+    var deleteFoodTwoButton = driver.findElement({css: "tbody#food-table-body > td:nth-child(3) > button > span"})
+    deleteFoodTwoButton.click()
+    driver.get('http://localhost:8080/index.html');
+
+    driver.findElement({id: 'breakfast-tbody'}).getText().then(function(textValue) {
+      assert.include(textValue, "food 1");
+      assert.notInclude(textValue, "food 2");
+      assert.include(textValue, "100");
+      assert.notInclude(textValue, "200");
+    });
+
+  });
+
+  test.it('add food / delete to breakfast changes persist in diary', function() {
+
+    // CREATE FOODS
+
+    driver.get('http://localhost:8080/foods.html');
+    var name = driver.findElement({id: 'new-food-name'});
+    var calories = driver.findElement({id: 'new-food-calories'});
+    var submitButton = driver.findElement({id: 'new-submit'});
+
+    name.sendKeys('food 1');
+    calories.sendKeys('100');
+    submitButton.click();
+
+    name.sendKeys('food 2');
+    calories.sendKeys('200');
+    submitButton.click();
+
+
+
+    // Add foods to breakfast lunch and dinner and snacks
+
+      // Select foods and add them to table
+      driver.get('http://localhost:8080/index.html');
+
+
+    var foodOneCheckbox = driver.findElement({css: "tbody#food-table-body > tr:nth-child(1) td:nth-child(1) > input[type='checkbox']"});
+    var foodTwoCheckbox = driver.findElement({css: "tbody#food-table-body > tr:nth-child(2) td:nth-child(1) > input[type='checkbox']"});
+    foodOneCheckbox.click();
+    foodTwoCheckbox.click();
+
+    var addToBreakFastButton = driver.findElement({css: "button#add-to-lunch.btn-info.btn-sm"});
+    addToBreakFastButton.click();
 
     driver.findElement({id: 'breakfast-tbody'}).getText().then(function(textValue) {
       assert.include(textValue, "food 1");
